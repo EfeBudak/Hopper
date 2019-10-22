@@ -1,0 +1,2 @@
+include ':app', ':hopper'
+rootProject.name='Hop Animation Sample'
