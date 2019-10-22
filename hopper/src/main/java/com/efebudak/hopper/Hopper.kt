@@ -1,20 +1,44 @@
 package com.efebudak.hopper
 
-class Hopper private constructor(val infinite:Boolean){
+import android.os.Handler
+import android.view.View
+import java.lang.ref.WeakReference
 
-    fun hopper(lambda: HopperBuilder.() -> Unit):Hopper{
+class Hopper private constructor(
+    view: View,
+    private val infinite: Boolean
+) {
 
-        return HopperBuilder().apply(lambda).build()
+    private val weakView: WeakReference<View> = WeakReference(view)
+    private val animationHandler = Handler()
+
+    fun start() {
+
+        animationHandler.post(object : Runnable {
+            override fun run() {
+
+                val animation = weakView.get()?.animate()
+                    ?.translationYBy(-40f)
+                    ?.setDuration(200)
+
+                animation?.withEndAction {
+                    weakView.get()?.animate()?.translationYBy(40f)?.duration = 200
+                }
+                animationHandler.postDelayed(this, 1000)
+            }
+        })
     }
 
-    class HopperBuilder{
-        var infinite :Boolean = true
 
-        fun infinite(lambda:() -> Boolean){
-            this.infinite = lambda()
+    class HopperBuilder(private val view: View) {
+        var infinite: Boolean = true
+
+        fun infinite(value:Boolean):HopperBuilder{
+            infinite = value
+            return this
         }
 
-        fun build() = Hopper(infinite)
+        fun build() = Hopper(view, infinite)
     }
 
 }
