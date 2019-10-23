@@ -1,7 +1,7 @@
 package com.efebudak.hopanimationsample
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.efebudak.hopper.Hopper
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,9 +12,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val hopper = Hopper.HopperBuilder(textView)
-            .infinite(true)
+            .times(0)
             .build()
-            .start()
+
+        hopper.start()
+
+        //hopper.end()
 
     }
 }
