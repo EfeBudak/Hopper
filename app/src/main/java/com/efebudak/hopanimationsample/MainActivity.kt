@@ -1,6 +1,7 @@
 package com.efebudak.hopanimationsample
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.efebudak.hopper.HopDirection
 import com.efebudak.hopper.Hopper
@@ -13,8 +14,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val hopper = Hopper.HopperBuilder(textView)
-            .times(10)
+            .times(8)
             .hopDirection(HopDirection.LEFT_TO_RIGHT)
+            .distance(50f)
+            .duration(2000)
+            .addAnimationFinishedListener {
+                Log.d("HopperBuilder", "Animation is finished")
+            }
             .build()
 
         hopper.start()
