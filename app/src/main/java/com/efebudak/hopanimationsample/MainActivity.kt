@@ -14,15 +14,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val hopper = Hopper.HopperBuilder(textView)
+            .hopDirection(HopDirection.LEFT_TO_RIGHT)
             .build()
         hopper.start()
-        hopper.end()
+        //hopper.end()
 
         Hopper.HopperBuilder(buttonLogin)
-            .hopDirection(HopDirection.TOP_TO_BOTTOM)
             .distanceInDp(16f)
             .duration(750)
-            .times(5)
+            .times(25)
             .addHopperFinishedListener {
                 //Do what you want to do
             }
