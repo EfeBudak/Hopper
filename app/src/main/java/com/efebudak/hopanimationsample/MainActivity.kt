@@ -14,11 +14,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val hopper = Hopper.HopperBuilder(textView)
-            .times(8)
+            .times(20)
             .hopDirection(HopDirection.LEFT_TO_RIGHT)
             .distance(50f)
             .duration(2000)
-            .addAnimationFinishedListener {
+            .addHopperFinishedListener {
                 Log.d("HopperBuilder", "Animation is finished")
             }
             .build()
@@ -26,6 +26,17 @@ class MainActivity : AppCompatActivity() {
         hopper.start()
 
         //hopper.end()
+
+        Hopper.HopperBuilder(buttonLogin)
+            .hopDirection(HopDirection.TOP_TO_BOTTOM)
+            .distanceInDp(16f)
+            .duration(750)
+            .times(5)
+            .addHopperFinishedListener {
+                //Do what you want to do
+            }
+            .build()
+            .start()
 
     }
 }

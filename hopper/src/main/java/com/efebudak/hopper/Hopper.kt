@@ -13,7 +13,7 @@ class Hopper private constructor(
     private val hopDirection: HopDirection,
     private val distance: Float,
     private val duration: Long,
-    private val animationFinishedCallback: (() -> Unit)?
+    private val hopperFinishedCallback: (() -> Unit)?
 ) {
 
     private val weakView: WeakReference<View> = WeakReference(view)
@@ -35,7 +35,7 @@ class Hopper private constructor(
                     returnAnimationWithDirection()?.withEndAction {
 
                         if (!hopperStarted) {
-                            animationFinishedCallback?.invoke()
+                            hopperFinishedCallback?.invoke()
                         }
                     }
                 }
@@ -126,9 +126,9 @@ class Hopper private constructor(
 
         private var times: Int = 0
         private var hopDirection: HopDirection = HopDirection.BOTTOM_TO_TOP
-        private var distance = 100f
+        private var distance = 50f
         private var duration = 1000L
-        private var animationFinishedCallback: (() -> Unit)? = null
+        private var hopperFinishedCallback: (() -> Unit)? = null
 
         /**
          * Set how many times the view is going to hop
@@ -194,17 +194,17 @@ class Hopper private constructor(
          *
          * times value must be set something finite before setting this listener
          */
-        fun addAnimationFinishedListener(animationFinishedListener: (() -> Unit)): HopperBuilder {
+        fun addHopperFinishedListener(hopperFinishedListener: (() -> Unit)): HopperBuilder {
             if (times == 0)
                 throw Exception(
                     "Hooper: Times value must be finite to add an animation finished listener!"
                 )
-            animationFinishedCallback = animationFinishedListener
+            hopperFinishedCallback = hopperFinishedListener
             return this
         }
 
         fun build() =
-            Hopper(view, times, hopDirection, distance, duration, animationFinishedCallback)
+            Hopper(view, times, hopDirection, distance, duration, hopperFinishedCallback)
     }
 
 }
