@@ -70,6 +70,14 @@ Defines how many times the view will hop. By default it is 0 which means that it
         .start()
 > *Note: Times value **MUST NOT** be 0. This method will throw an exception if the hopper is infinite and have a finished listener.*
 
+**End:**
+Hopper can also be stopped whenever it is necessary.
+
+    val hopper = Hopper.HopperBuilder(textView)
+        .build()
+    hopper.start()
+    hopper.end()
+
 ## Dependency
 ```gradle
 allprojects {

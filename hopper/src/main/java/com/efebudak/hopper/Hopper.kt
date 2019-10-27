@@ -50,7 +50,10 @@ class Hopper private constructor(
 
     fun end() {
         animationHandler.removeCallbacksAndMessages(null)
-        hopperStarted = false
+        if (hopperStarted) {
+            hopperStarted = false
+            hopperFinishedCallback?.invoke()
+        }
     }
 
     private fun hopAnimationWithDirection(): ViewPropertyAnimator? {
