@@ -2,6 +2,8 @@
 [![](https://jitpack.io/v/efebudak/hopper.svg)](https://jitpack.io/#efebudak/hopper) [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 Hopper is a hopping animation specific android library. 
 
+<img src="./readmeassets/AndroidHopAnimation.gif" width="500" />
+
 <img src="./readmeassets/Hopper.gif" width="250" />
 
 ## Usage
