@@ -84,6 +84,8 @@ Hopper can also be stopped whenever it is necessary.
 
 ## Dependency
 ```gradle
+
+(in root level build.gradle)
 allprojects {
     repositories {
         ...
@@ -91,7 +93,8 @@ allprojects {
     }
 }
 
+(in app level build.gradle)
 dependencies {
-    compile 'com.github.efebudak:hopper:1.0.1'
+    implementation 'com.github.efebudak:hopper:1.0.1'
 }
 ```
