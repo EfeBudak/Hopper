@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.efebudak.hopper.HopDirection
 import com.efebudak.hopper.Hopper
+import com.efebudak.hopper.hopToDirection
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
       .build()
       .start()
 
+    buttonCancelValueAnimator.hopToDirection(HopDirection.RIGHT_TO_LEFT)
 
     val animator = ValueAnimator.ofInt(0, 10)
 
