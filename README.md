@@ -1,5 +1,5 @@
 # Hopper
-[![](https://jitpack.io/v/efebudak/hopper.svg)](https://jitpack.io/#efebudak/hopper) [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![](https://jitpack.io/v/efebudak/hopper.svg)](https://jitpack.io/#efebudak/hopper) [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=23)
 
 Hopper is a hopping animation specific android library.
 
@@ -92,6 +92,6 @@ allprojects {
 }
 
 dependencies {
-    compile 'com.github.efebudak:hopper:1.0.0'
+    compile 'com.github.efebudak:hopper:1.0.1'
 }
 ```
