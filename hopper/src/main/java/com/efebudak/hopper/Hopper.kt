@@ -1,6 +1,7 @@
 package com.efebudak.hopper
 
 import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.ViewPropertyAnimator
 import android.view.animation.AccelerateInterpolator
@@ -17,7 +18,7 @@ class Hopper private constructor(
 ) {
 
     private val weakView: WeakReference<View> = WeakReference(view)
-    private val animationHandler = Handler()
+    private val animationHandler = Handler(Looper.getMainLooper())
     private var hopperStarted = false
     private var currentHopIteration = 0
 
@@ -67,18 +68,21 @@ class Hopper private constructor(
                     ?.translationYBy(-1 * distance)
                     ?.setDuration(durationInMs)
             }
+
             HopDirection.TOP_TO_BOTTOM -> {
                 weakView.get()?.animate()
                     ?.setInterpolator(DecelerateInterpolator())
                     ?.translationYBy(distance)
                     ?.setDuration(durationInMs)
             }
+
             HopDirection.LEFT_TO_RIGHT -> {
                 weakView.get()?.animate()
                     ?.setInterpolator(DecelerateInterpolator())
                     ?.translationXBy(distance)
                     ?.setDuration(durationInMs)
             }
+
             HopDirection.RIGHT_TO_LEFT -> {
                 weakView.get()?.animate()
                     ?.setInterpolator(DecelerateInterpolator())
@@ -100,12 +104,14 @@ class Hopper private constructor(
                     ?.translationYBy(distance)
                     ?.setDuration(durationInMs)
             }
+
             HopDirection.TOP_TO_BOTTOM -> {
                 weakView.get()?.animate()
                     ?.setInterpolator(AccelerateInterpolator())
                     ?.translationYBy(-1 * distance)
                     ?.setDuration(durationInMs)
             }
+
             HopDirection.LEFT_TO_RIGHT -> {
                 weakView.get()?.animate()
                     ?.setInterpolator(AccelerateInterpolator())
